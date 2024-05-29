@@ -1,0 +1,131 @@
+@font-face {
+    font-family: source_code_pro;
+    src: url(../assets/font/sourcecodepro/SourceCodePro-VariableFont_wght.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #282a35;
+    color: white;
+    font-family: source_code_pro;
+    font-size: 1rem;
+    height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: #424040;
+}
+
+nav h1 {
+    color: white;
+    margin: 0 1rem;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    flex-direction: row;
+    font-size: large;
+    font-weight: 700;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+nav a:hover {
+    color: yellow;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: center;
+    margin: 1rem;
+    font-size: 1rem;
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+section img {
+    width: auto;
+    height: 20rem;
+    display: block;
+    margin: 0 auto;
+}
+
+section h1 {
+    font-size: 3vh;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+
+section p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+}
+
+#terminal {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 3rem;
+    background-color: #282a35;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+
+}
+
+.terminal {
+    color: white;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    outline: none;
+    font-family: source_code_pro;
+    background-color: #282a35;
+    border: none;
+    border-bottom: 3px solid #282a35;
+    width: 55%;
+    caret-color:#8fa78f;
+    
+}
+
+
+
+
+
+.terminal-prompt {
+    color: #8fa78f ;
+    font-weight: 800;
+    width:29rem;
+}
+
