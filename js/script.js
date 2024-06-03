@@ -1,35 +1,15 @@
-const cursor = document.querySelector('.cursor');
-function blinkCursor() {
-    console.log(cursor); // Log the cursor element to the console
-    setInterval(() => {
-        cursor.style.visibility = (cursor.style.visibility === 'visible') ? 'hidden' : 'visible';
-    }, 500); // Adjust blinking speed here (milliseconds)
-
-    console.log(cursor.style.animation); // Log the cursor's animation property
-}
-
-// Call the function to start blinking the cursor
-blinkCursor();
-
-
-
-
-
 const text = document.querySelector('.welcome_text');
 const content = document.querySelector('.content');
-const terminalInput = document.querySelector('.terminal');
-const terminal = document.getElementById('terminal');
+const sectionimage = document.querySelector('.section-image');
 
 const welcomeText = [
-    '       __                              __          __                  	^',
-    '      / /___ __________  ___  _____   / /   ____ _/ /_____  __  _______	^',
-    ' __  / / __ `/ ___/ __ \\/ _ \\/ ___/  / /   / __ `/ __/ __ \\/ / / / ___/	^',
-    '/ /_/ / /_/ (__  ) /_/ /  __/ /     / /___/ /_/ / /_/ /_/ / /_/ / /    ^',
-    '\\____/\\__,_/____/ .___/\\___/_/     /_____/\\__,_/\\__/\\____/\\__,_/_/     ^',
-    '          /_/                                               ',
+    '                  __                              __          __                            ^',
+    '                 / /___ __________  ___  _____   / /   ____ _/ /_____  __  _______          ^',
+    '         __  / / __ `/ ___/ __ \\/ _ \\/ ___/  / /   / __ `/ __/ __ \\/ / / / ___/       ^',
+    '           / /_/ / /_/ (__  ) /_/ /  __/ /     / /___/ /_/ / /_/ /_/ / /_/ / /              ^',
+    '    \\____/\\__,_/____/ .___/\\___/_/     /_____/\\__,_/\\__/\\____/\\__,_/_/        ^',
+    '                     /_/                                                          ^',
 ];
-
-const user = "guest@webterm$ ";
 const iam = " I'm a software developer living ^ in the Netherlands";
 
 let i = 0;
@@ -41,7 +21,7 @@ function welcomeAnimate(element, animatedText, speed, callback) {
         if (j < animatedText[i].length) {
             if (animatedText[i].charAt(j) === "^") {
                 element.innerHTML += "<br>";
-            } else if (animatedText[i].charAt(j) === " ") {
+            } else if (animatedText[i].charAt(j) === " ") { // Add non-breaking space
                 element.innerHTML += "&nbsp;";
             } else {
                 element.innerHTML += animatedText[i].charAt(j);
@@ -58,46 +38,89 @@ function welcomeAnimate(element, animatedText, speed, callback) {
     }
 }
 
-function enableTerminal() {
-    const terminalPrompt = document.createElement('span');
-    const cursor = document.createElement('span');
-    cursor.classList.add('cursor');
-    terminalPrompt.textContent = 'Visitor@website.JasperLatour;~$ ';
-    terminalPrompt.classList.add('terminal-prompt'); // Add a class for styling
-    
-    // Clear the terminal and append the prompt
-    terminal.innerHTML = '';
-    terminal.appendChild(terminalPrompt);
-    terminal.appendChild(cursor);
+welcomeAnimate(text, welcomeText, 5, () => {
+    welcomeAnimate(content, iam, 5, () => {
+    content.style.display = 'block';
+    sectionimage.style.display = 'block';
+});});
 
-    // Append the input field
-    terminal.appendChild(terminalInput);
 
-    terminalInput.style.display = 'inline';
-    terminalInput.style.borderBottomColor =  "rgb(254, 254, 254,0.1)";
+
+const terminalUser = 'Visitor@website.JasperLatour;~$ ';
+const terminal = document.getElementById('terminal');
+const terminalInput = document.getElementById('terminal-input');
+const terminalOutput = document.getElementById('terminal-output');
+
+function terminalAnimate() {
     terminalInput.focus();
-
-    // Adjust the animation to include the prompt
-    const terminalField = ''; // Remove the prompt from here
-    i = 0; j = 0;
-    welcomeAnimate(terminalPrompt, terminalField, speed, () => {
-        // After the prompt animation, enable the input field
-        terminalInput.style.display = 'inline';
-        terminalInput.focus();
-    });
 }
 
-
-function startTyping() {
-    i = 0; j = 0;
-    welcomeAnimate(text, welcomeText, speed, () => {
-        i = 0; j = 0;
-
-        welcomeAnimate(content, iam, speed);
-        setTimeout(enableTerminal, 1500); // Wait 1 second before enabling the terminal
-    });
+function animateCommand(element, commandText, speed) {
+    let i = 0;
+    function animate() {
+        if (i < commandText.length) {
+            if (commandText.slice(i, i+4) === '<br>') { // check for line breaks
+                element.innerHTML += '<br>';
+                i += 4;
+            } else if (commandText.charAt(i) === " ") { // check for tabs
+                element.innerHTML += '&nbsp;';
+                i++;
+            } else {
+                element.innerHTML += commandText.charAt(i);
+                i++;
+            }
+            setTimeout(animate, speed);
+        }
+    }
+    animate();
 }
 
-startTyping();
+function command(input) {
+    switch (input) {
+        case 'clear':
+            terminalOutput.innerHTML = '';
+            break;
+        case 'help':
+        case 'ls command':
+        case '?':
+        case 'h':
+        case 'Help':
+        case 'HELP':
+        case 'H':
+            terminalOutput.innerHTML += terminalInput.value + '<br>';
+            animateCommand(terminalOutput, 'Available commands: <br>' +
+                'clear - Clear the terminal screen <br>' +
+                'help - Display this help text<br>'      +
+                'projects - Display my projects<br>'
+            , 50, );
+            break;
+
+        case 'projects':
+        case 'Projects':
+        case 'project':
+        case 'Project':
+        case 'p':
+        case 'P':
+        case 'ls projects':
+            animateCommand(terminalOutput, 'My projects:<br>' +
+                'Flipper - a home made dual filpper cast <br>' +
+                'AutoMatic gasstation <br>' +
+                'Self made audio mixer', 5);
+            break;
+
+        case 'ls':
+            animateCommand(terminalOutput, 'About Me        Projects        Contact' , 50);
+    }
+}
+
+terminalInput.addEventListener('keyup', function (e) {
+    if (e.key === 'Enter') {
+
+        terminalOutput.innerHTML += terminalUser + terminalInput.value + '<br>';
+        command(terminalInput.value);
+        terminalInput.value = '';
 
 
+    }
+});
+terminalAnimate();
