@@ -27,6 +27,7 @@ nav {
     right: 0;
     height: 40px;
     background-color: #424040;
+    z-index: 1;
 }
 
 @keyframes blink {
@@ -86,15 +87,9 @@ section {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    row-gap: 1rem;
     align-items: center;
-    margin: 1rem;
     font-size: 1rem;
-    position: fixed;
-    top: 1rem;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    position: relative;
 }
 
 section img {
@@ -102,6 +97,7 @@ section img {
     height: 40vh;
     margin: 0 auto;
     display: none;
+    border-radius: 1rem;
 }
 
 section h1 {
@@ -118,16 +114,27 @@ section p {
     text-align: center;
 }
 
-.terminal-container{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 1.5rem;
+.terminal-container {
+    background-color: #300A24;
+    width: 100%;
+    height: 2rem;
     overflow-y: scroll;
-    height: 20vh;
+    transition: height 1s;
+    position: absolute;
+    bottom: -5rem;
+    transform-origin: bottom;
 }
-.terminal-container::-webkit-scrollbar {
-    display: none;
+
+
+
+.terminal-container:hover {
+    height: 5rem; /* Height changes to 8rem on hover */
+}
+
+
+.terminal-container.active {
+    height: 7rem; /* Height when expanded */
+
 }
 
 #terminal-user {
@@ -136,12 +143,152 @@ section p {
 
 #terminal-input {
     color: white;
-    background-color: #282a35;
+    background-color: #300A24;
     border: none;
     font-family: source_code_pro;
-    font-size: 1.5rem;
+    font-size: 1rem;
     outline: none;
 }
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    align-self: flex-start;
+    grid-row: 1/3;
+    margin-top: 2rem;
+}
+
+
+
+.project-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.about-section p {
+    text-align: left;
+    margin-left: 5rem;
+    font-size: 1.1rem;
+}
+
+
+.about-section img {
+    width: 80%;
+    height: auto;
+    display: block;
+    align-self: center;
+}
+
+.about-section .terminal-container {
+    grid-column: 1/3;;
+    margin-top: 2rem;
+}
+
+.project-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.project-section .terminal-container {
+    grid-column: 1/5;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    background-color: #300A24;
+    height: 70vh;
+    padding: 2rem;
+    align-content: center;
+    border-radius: 1rem;
+}
+.card-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    text-align: left;
+}
+
+.card-content p {
+    text-align: left;
+    font-size: 1.1rem;
+
+}
+
+.card-content img {
+    width: 80%;
+    align-self: center;
+    height: auto;
+    display: block;
+    margin: 1rem;
+}
+
+.card:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(66,64, 64, 0.9 );
+    color: #424040;
+    filter: blur(5px);
+    border-radius: 1rem;
+    z-index: -1;
+    transition: transform 0.5s
+}
+
+.card:hover {
+    backdrop-filter: blur(5px);
+    transform: scale(1.03);
+    transition: transform 0.5s;
+
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: 300A24;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #424040;
+    backdrop-filter: drop-shadow(0 0 1rem white);
+}
+
 
 
 
