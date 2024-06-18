@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '                     /_/                                                          ^',
     ];
 
-    const iam = " I'm a software developer living ^ in the Netherlands";
+    const iam = "_____ I'm a software developer living ^ in the Netherlands ^ Check out the terminal below";
 
     let i = 0;
     let j = 0;

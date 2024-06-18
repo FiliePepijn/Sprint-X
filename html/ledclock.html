@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav>
-    <h1>About-Me<span>_</span></h1>
+    <h1>Jasper_Latour<span>_</span></h1>
     <ul>
         <li><a href="../index.html">Home</a></li>
         <li><a href="./about.html">About</a></li>
@@ -26,19 +26,91 @@
     /_/  |_/_.___/\____/\__,_/\__/  /_/  /_/\___/
     </pre>
 
-    <div class="about-section">
-        <div class="section-image">
-            <img  src="../assets/img/selfie.jpg" alt="" style="object-fit: cover">
-        </div>
-        <p>
-            Hello, I'm Jasper Latour <br> <br>
-            I am 20 Years old and live in Helmond, the Netherlands. I still live at home with my parents, brother and sister.
-            <br><br>
+    <div class="ledclock-section">
+<!--        <div class="section-image">-->
+<!--            <img  src="../assets/img/selfie.jpg" alt="" style="object-fit: cover">-->
+<!--        </div>-->
+        <div>
+            <h1>Wi-Fi and MQTT Controlled NeoPixel LED Clock</h1>
 
-            I'm currently studying software development at Fontys University in Eindhoven. My studies mainly focus on developing software with hardware in mind, such as programming Arduino, Raspberry Pi, and other development boards.
-            <br><br>
-            In my free time, I enjoy 3D printing useful objects as well as undertaking projects. Additionally, I am a group leader for kids between the ages of 10 and 14 in Scouting. This involves activities every Friday evening and around four weekends per year.
-        </p>
+            <h2>Introduction</h2>
+            <p>
+                This project implements a clock using NeoPixel LEDs, controlled via Wi-Fi and MQTT messages. It leverages
+                several libraries to manage Wi-Fi connectivity, MQTT communication, JSON parsing, and time
+                synchronization. The clock displays the current time with NeoPixel LEDs and allows for remote control
+                over the display characteristics such as color and brightness.</p>
+
+            <h2>Libraries Used</h2>
+            <ul>
+                <li><strong>ESP8266WiFi.h</strong>: Manages Wi-Fi connections.</li>
+                <li><strong>Wire.h</strong>: Facilitates I2C communication.</li>
+                <li><strong>PubSubClient.h</strong>: Implements an MQTT client for communication with an MQTT broker.
+                </li>
+                <li><strong>ArduinoJson.h</strong>: Parses JSON payloads received via MQTT.</li>
+                <li><strong>NTPClient.h and WiFiUdp.h</strong>: Utilizes Network Time Protocol (NTP) for synchronizing
+                    time.
+                </li>
+                <li><strong>RtcDS3231.h</strong>: Manages the Real-Time Clock (RTC).</li>
+                <li><strong>Adafruit_NeoPixel.h</strong>: Controls NeoPixel LEDs.</li>
+            </ul>
+
+            <h2>Configuration</h2>
+            <h3>Wi-Fi and MQTT Configuration</h3>
+            <ul>
+                <li><strong>wifi_ssid</strong> and <strong>wifi_password</strong>: Credentials for connecting to the
+                    Wi-Fi network.
+                </li>
+                <li><strong>mqtt_server</strong>, <strong>mqtt_user</strong>, and <strong>mqtt_password</strong>:
+                    Details for connecting to the MQTT broker.
+                </li>
+            </ul>
+
+            <h3>LED Configuration</h3>
+            <ul>
+                <li>Defines the pin connected to the NeoPixel LEDs, the number of LEDs, and layout specifics.</li>
+            </ul>
+
+            <h3>Time Variables and NTP Client</h3>
+            <ul>
+                <li>Synchronizes time using NTP and updates the RTC.</li>
+            </ul>
+
+            <h2>Setup Function</h2>
+            <p>The <code>setup</code> function performs the following tasks:</p>
+            <ul>
+                <li>Initializes serial communication for debugging.</li>
+                <li>Connects to the specified Wi-Fi network using the provided credentials.</li>
+                <li>Connects to the MQTT broker with the given details.</li>
+                <li>Initializes the NTP client and synchronizes the RTC to ensure accurate timekeeping.</li>
+                <li>Sends auto-discovery messages to integrate with home automation systems.</li>
+            </ul>
+
+            <h2>MQTT Callback</h2>
+            <p>The MQTT callback function handles incoming messages by:</p>
+            <ul>
+                <li>Parsing the JSON payload to extract information about light state, brightness, and color.</li>
+                <li>Updating the NeoPixel display according to the received commands.</li>
+            </ul>
+
+            <h2>Reconnect Function</h2>
+            <p>The <code>reconnect</code> function ensures the device maintains a connection to the MQTT broker. If the
+                connection is lost, it attempts to reconnect until successful.</p>
+
+            <h2>Main Loop</h2>
+            <p>The <code>loop</code> function continuously:</p>
+            <ul>
+                <li>Updates the clock display based on the current time.</li>
+                <li>Manages the MQTT connection, ensuring it remains active.</li>
+                <li>Publishes the current state of the lights, including brightness and color, to the MQTT broker.</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>This project successfully integrates several technologies to create a network-connected LED clock. The
+                use of MQTT allows for seamless remote control of the display characteristics, making it a versatile
+                addition to any smart home setup. The combination of NTP and RTC ensures accurate and reliable
+                timekeeping. This clock can be easily customized and expanded for various applications, showcasing the
+                power and flexibility of IoT (Internet of Things) devices.</p></div>
+    </div>
 
         <div class="terminal-container">
             <span id="terminal-output"></span>
