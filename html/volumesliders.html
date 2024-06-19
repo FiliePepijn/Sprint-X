@@ -9,50 +9,148 @@
 
 </head>
 <body>
-<nav>
-    <h1>About-Me<span>_</span></h1>
-    <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./projects.html">Projects</a></li>
-    </ul>
-</nav>
-<section >
+<div class="star">
+    <nav>
+        <h1>About-Me<span>_</span></h1>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+        </ul>
+    </nav>
+    <section>
     <pre class="title">
-        ___    __                __     __  ___
-       /   |  / /_  ____  __  __/ /_   /  |/  /__
-      / /| | / __ \/ __ \/ / / / __/  / /|_/ / _ \
-     / ___ |/ /_/ / /_/ / /_/ / /_   / /  / /  __/
-    /_/  |_/_.___/\____/\__,_/\__/  /_/  /_/\___/
+     _    __      __                    _____ ___     __
+    | |  / /___  / /_  ______ ___  ___ / ___// (_)___/ /__  _____
+    | | / / __ \/ / / / / __ `__ \/ _ \\__ \/ / / __  / _ \/ ___/
+    | |/ / /_/ / / /_/ / / / / / /  __/__/ / / / /_/ /  __/ /
+    |___/\____/_/\__,_/_/ /_/ /_/\___/____/_/_/\__,_/\___/_/
     </pre>
 
-    <div class="about-section">
-        <div class="section-image">
-            <img  src="../assets/img/selfie.jpg" alt="" style="object-fit: cover">
+        <div class="pages-section">
+            <div>
+                <h2>Introduction</h2>
+                <p>In modern music production and live performance setups, precise control over audio levels is crucial.
+                    A volume slider, integrated with Arduino and a MIDI chip, offers a versatile and programmable
+                    solution for controlling audio volume. This report details the design, components, and
+                    implementation of a volume slider using an Arduino microcontroller and a MIDI (Musical Instrument
+                    Digital Interface) chip.</p>
+
+                <h2>Components and Tools</h2>
+                <ul>
+                    <li><strong>Arduino Microcontroller:</strong> Arduino Uno or any compatible model</li>
+                    <li><strong>MIDI Chip:</strong> MIDI Shield or a dedicated MIDI breakout board (e.g., SparkFun MIDI
+                        Shield)
+                    </li>
+                    <li><strong>Slider (Potentiometer):</strong> Linear potentiometer</li>
+                    <li><strong>MIDI Cable:</strong> Connects the MIDI output from the Arduino to a MIDI device or MIDI
+                        interface
+                    </li>
+                    <li><strong>Additional Components:</strong> Resistors, capacitors, jumper wires, breadboard, and a
+                        MIDI DIN connector
+                    </li>
+                    <li><strong>Software:</strong> Arduino IDE, MIDI Library</li>
+                </ul>
+
+                <h2>Circuit Design</h2>
+                <p>The circuit design involves connecting the linear potentiometer to the Arduino and interfacing the
+                    MIDI chip for communication. Here’s a step-by-step guide:</p>
+                <ol>
+                    <li><strong>Connect the Potentiometer:</strong>
+                        <ul>
+                            <li><strong>VCC (5V):</strong> Connects to one end terminal of the potentiometer</li>
+                            <li><strong>GND:</strong> Connects to the other end terminal</li>
+                            <li><strong>Analog Input (A0):</strong> Connects to the wiper (middle terminal) of the
+                                potentiometer
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>MIDI Chip Connection:</strong>
+                        <ul>
+                            <li><strong>TX (Transmit):</strong> Connects to the Arduino’s digital pin (usually pin 1 or
+                                2, depending on the library setup)
+                            </li>
+                            <li><strong>GND:</strong> Common ground with Arduino</li>
+                            <li><strong>VCC:</strong> Connects to 5V power supply</li>
+                        </ul>
+                    </li>
+                    <li><strong>MIDI DIN Connector:</strong>
+                        <ul>
+                            <li><strong>Pin 4:</strong> Connects to the MIDI chip’s TX pin</li>
+                            <li><strong>Pin 2:</strong> Common ground</li>
+                            <li><strong>Pin 5:</strong> Connected via a 220-ohm resistor to 5V</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h2>Programming the Arduino</h2>
+                <p>The Arduino is programmed to read the potentiometer value and send corresponding MIDI volume control
+                    messages.
+                    Here is a link to my git</p>
+
+
+                <h2>Implementation and Testing</h2>
+                <p>Here are the steps for assembling and testing the volume slider:</p>
+                <ol>
+                    <li><strong>Assembly:</strong> Assemble the circuit on a breadboard or solder components onto a PCB
+                        for a more permanent solution. Ensure all connections are secure and the potentiometer moves
+                        smoothly.
+                    </li>
+                    <li><strong>Testing:</strong> Connect the MIDI cable from the Arduino to a MIDI interface or
+                        directly to a MIDI-compatible device. Upload the sketch to the Arduino. Move the slider and
+                        observe the changes in volume on the connected MIDI device.
+                    </li>
+                </ol>
+
+                <h2>Applications and Extensions</h2>
+                <p>This volume slider can be used in various applications:</p>
+                <ul>
+                    <li><strong>Live Performance:</strong> Real-time control over volume levels of different instruments
+                        or audio tracks.
+                    </li>
+                    <li><strong>Studio Production:</strong> Precise adjustments during mixing and mastering processes.
+                    </li>
+                    <li><strong>Integration with DAWs:</strong> Use the volume slider as a MIDI controller within
+                        digital audio workstations like Ableton Live, FL Studio, or Logic Pro.
+                    </li>
+                </ul>
+                <p>Possible extensions include:</p>
+                <ul>
+                    <li><strong>Multiple Sliders:</strong> Incorporate multiple sliders for controlling various MIDI
+                        parameters (e.g., pan, expression).
+                    </li>
+                    <li><strong>Wireless Communication:</strong> Use Bluetooth or Wi-Fi modules to create a wireless
+                        MIDI controller.
+                    </li>
+                    <li><strong>Visual Feedback:</strong> Add LEDs or an LCD screen to display current volume levels.
+                    </li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>Creating a volume slider using an Arduino and a MIDI chip is an effective way to gain precise control
+                    over audio levels in various music production and performance contexts. The flexibility of Arduino
+                    programming and the standardization of MIDI protocol make this project highly adaptable to different
+                    applications. By following the outlined steps, you can build a functional and reliable volume
+                    control device.</p>
+            </div>
+            <img src="../assets/img/audio-1.jpeg" alt="">
         </div>
-        <p>
-            Hello, I'm Jasper Latour <br> <br>
-            I am 20 Years old and live in Helmond, the Netherlands. I still live at home with my parents, brother and sister.
-            <br><br>
 
-            I'm currently studying software development at Fontys University in Eindhoven. My studies mainly focus on developing software with hardware in mind, such as programming Arduino, Raspberry Pi, and other development boards.
-            <br><br>
-            In my free time, I enjoy 3D printing useful objects as well as undertaking projects. Additionally, I am a group leader for kids between the ages of 10 and 14 in Scouting. This involves activities every Friday evening and around four weekends per year.
-        </p>
 
-        <div class="terminal-container">
-            <span id="terminal-output"></span>
-            <div id="terminal">
-                <label> <span id="terminal-user">Visitor@website.JasperLatour;~$</span> </label>
-                <label><input id="terminal-input" type="text" class="terminal" /></label>
+
+            
+            <div class="terminal-container">
+                <span id="terminal-output"></span>
+                <div id="terminal">
+                    <label> <span id="terminal-user">Visitor@website.JasperLatour;~$</span> </label>
+                    <label><input id="terminal-input" type="text" class="terminal"/></label>
+                </div>
             </div>
         </div>
-    </div>
 
 
-
-
-</section>
+    </section>
+</div>
 
 </body>
 </html>

@@ -9,50 +9,186 @@
 
 </head>
 <body>
-<nav>
-    <h1>About-Me<span>_</span></h1>
-    <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./projects.html">Projects</a></li>
-    </ul>
-</nav>
-<section >
+<div class="star">
+    <nav>
+        <h1>About-Me<span>_</span></h1>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./projects.html">Projects</a></li>
+        </ul>
+    </nav>
+    <section>
     <pre class="title">
-        ___    __                __     __  ___
-       /   |  / /_  ____  __  __/ /_   /  |/  /__
-      / /| | / __ \/ __ \/ / / / __/  / /|_/ / _ \
-     / ___ |/ /_/ / /_/ / /_/ / /_   / /  / /  __/
-    /_/  |_/_.___/\____/\__,_/\__/  /_/  /_/\___/
+        ____  _       ____        ____
+       / __ \(_)___  / __ )____ _/ / /
+      / /_/ / / __ \/ __  / __ `/ / /
+     / ____/ / / / / /_/ / /_/ / / /
+    /_/   /_/_/ /_/_____/\__,_/_/_/
     </pre>
 
-    <div class="about-section">
-        <div class="section-image">
-            <img  src="../assets/img/selfie.jpg" alt="" style="object-fit: cover">
+        <div class="pages-section">
+            <div>
+                <h1>Report on a 2-Player Pinball Machine with Solenoids and Arduinos</h1>
+
+                <h2>Introduction</h2>
+                <p>This report outlines the development of a two-player pinball machine, utilizing solenoids for mechanical movements and Arduino microcontrollers for control logic and interaction. The design incorporates standard pinball features such as flippers, bumpers, and score tracking, with additional customizations for a competitive two-player experience.</p>
+
+                <h2>Components and Materials</h2>
+                <h3>Mechanical Components</h3>
+                <ul>
+                    <li><strong>Solenoids:</strong> Used for flippers, bumpers, and kickers. Solenoids convert electrical energy into mechanical motion, essential for dynamic interactions in the pinball machine.</li>
+                    <li><strong>Flippers:</strong> Controlled by solenoids, these are the primary means for players to interact with the ball.</li>
+                    <li><strong>Bumpers:</strong> Activated by ball contact, they add to the game dynamics by changing the ball’s trajectory and scoring points.</li>
+                    <li><strong>Ball Shooter:</strong> A spring-loaded mechanism to launch the ball into play.</li>
+                    <li><strong>Playfield:</strong> The surface on which the ball rolls, featuring various obstacles and targets.</li>
+                    <li><strong>Cabinet:</strong> The housing for the playfield and all components, including a backboard for display and scoring.</li>
+                </ul>
+
+                <h3>Electronic Components</h3>
+                <ul>
+                    <li><strong>Arduino Microcontrollers:</strong> At least two Arduino boards (one for each player) to handle input from buttons, control solenoids, and manage scoring.</li>
+                    <li><strong>Power Supply:</strong> A suitable power supply to drive solenoids and Arduino boards.</li>
+                    <li><strong>Buttons and Switches:</strong> For player input and ball detection.</li>
+                    <li><strong>LED Displays:</strong> For scoring and game status.</li>
+                </ul>
+
+                <h3>Additional Materials</h3>
+                <ul>
+                    <li><strong>Wiring and Connectors:</strong> For electrical connections.</li>
+                    <li><strong>Mounting Hardware:</strong> Screws, brackets, and mounts to secure components.</li>
+                    <li><strong>Wood and Acrylic Sheets:</strong> For the playfield and cabinet construction.</li>
+                </ul>
+
+                <h2>Design and Construction</h2>
+                <h3>Mechanical Design</h3>
+                <ol>
+                    <li><strong>Playfield Layout:</strong>
+                        <ul>
+                            <li>Design the playfield with CAD software, placing bumpers, flippers, targets, and lanes strategically to ensure engaging gameplay.</li>
+                            <li>Cut the playfield from a suitable material, like plywood or acrylic.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Solenoid Placement:</strong>
+                        <ul>
+                            <li>Mount solenoids for flippers and bumpers beneath the playfield.</li>
+                            <li>Ensure solenoids have adequate power and response time for fast action.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Ball Shooter Mechanism:</strong>
+                        <ul>
+                            <li>Install the ball shooter at the bottom center of the playfield.</li>
+                            <li>Ensure smooth and consistent ball launch.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Electronic Design</h3>
+                <ol>
+                    <li><strong>Arduino Control System:</strong>
+                        <ul>
+                            <li>Write Arduino code to handle inputs from buttons and switches.</li>
+                            <li>Control solenoids using transistors or MOSFETs, as Arduino pins cannot supply sufficient current directly.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Score Tracking:</strong>
+                        <ul>
+                            <li>Use sensors (e.g., IR sensors or microswitches) to detect ball interactions with bumpers and targets.</li>
+                            <li>Update scores on LED displays in real-time.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Power Management:</strong>
+                        <ul>
+                            <li>Ensure solenoids have an adequate and stable power supply.</li>
+                            <li>Use a separate power supply for Arduinos and other electronics to prevent interference.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Assembly</h3>
+                <ol>
+                    <li><strong>Cabinet Construction:</strong>
+                        <ul>
+                            <li>Build the cabinet frame and install the playfield.</li>
+                            <li>Ensure easy access to electronic components for maintenance.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Wiring and Connections:</strong>
+                        <ul>
+                            <li>Connect solenoids, buttons, and sensors to the Arduino boards.</li>
+                            <li>Route wiring neatly to avoid interference and damage.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Testing and Debugging:</strong>
+                        <ul>
+                            <li>Test each component individually (e.g., flippers, bumpers) to ensure proper operation.</li>
+                            <li>Debug the Arduino code for reliable performance and accurate scoring.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h2>Software Development</h2>
+                <h3>Arduino Code</h3>
+                <ol>
+                    <li><strong>Initialization:</strong>
+                        <ul>
+                            <li>Set up pins for inputs (buttons, sensors) and outputs (solenoids, LEDs).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Main Loop:</strong>
+                        <ul>
+                            <li>Continuously read inputs and control solenoids accordingly.</li>
+                            <li>Update scores based on sensor inputs and display them on the LED displays.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Interrupts and Timing:</strong>
+                        <ul>
+                            <li>Use interrupts for immediate response to critical events (e.g., button presses).</li>
+                            <li>Implement timing mechanisms to ensure smooth gameplay and prevent solenoid overheating.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h2>Testing and Calibration</h2>
+                <ol>
+                    <li><strong>Component Testing:</strong>
+                        <ul>
+                            <li>Test each solenoid, sensor, and display individually to ensure they function correctly.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Gameplay Testing:</strong>
+                        <ul>
+                            <li>Play test sessions to ensure the game is engaging and all components respond appropriately.</li>
+                            <li>Adjust the power and response time of solenoids as needed.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Calibration:</strong>
+                        <ul>
+                            <li>Fine-tune sensor positions and sensitivity.</li>
+                            <li>Adjust flipper strength and bumper response for balanced gameplay.
+                                <br>.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <img src="../assets/img/pinball.jpg" alt="">
         </div>
-        <p>
-            Hello, I'm Jasper Latour <br> <br>
-            I am 20 Years old and live in Helmond, the Netherlands. I still live at home with my parents, brother and sister.
-            <br><br>
 
-            I'm currently studying software development at Fontys University in Eindhoven. My studies mainly focus on developing software with hardware in mind, such as programming Arduino, Raspberry Pi, and other development boards.
-            <br><br>
-            In my free time, I enjoy 3D printing useful objects as well as undertaking projects. Additionally, I am a group leader for kids between the ages of 10 and 14 in Scouting. This involves activities every Friday evening and around four weekends per year.
-        </p>
 
-        <div class="terminal-container">
-            <span id="terminal-output"></span>
-            <div id="terminal">
-                <label> <span id="terminal-user">Visitor@website.JasperLatour;~$</span> </label>
-                <label><input id="terminal-input" type="text" class="terminal" /></label>
+
+            
+            <div class="terminal-container">
+                <span id="terminal-output"></span>
+                <div id="terminal">
+                    <label> <span id="terminal-user">Visitor@website.JasperLatour;~$</span> </label>
+                    <label><input id="terminal-input" type="text" class="terminal"/></label>
+                </div>
             </div>
         </div>
-    </div>
 
 
-
-
-</section>
+    </section>
+</div>
 
 </body>
 </html>

@@ -8,13 +8,20 @@
     margin: 0;
 }
 
-body {
+
+
+.star {
     background-color: #282c34;
     color: #A8A8A8;
     font-family: source_code_pro;
     font-size: 1rem;
-    height: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    width: 100vw;
+    height: 100%;
 }
+
+
 
 nav {
     display: flex;
@@ -87,16 +94,19 @@ nav a:hover {
 
 section {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     font-size: 1rem;
     position: relative;
+    /*top: 40px;*/
+    /*height: 100%;*/
 }
+
+
 
 section img {
     width: auto;
-    height: 40vh;
+    height: 30vh;
     margin: 0 auto;
     display: none;
     border-radius:20px;
@@ -104,32 +114,33 @@ section img {
 }
 
 section h1 {
+    margin-top: 2rem;
     font-size: 3vh;
     font-weight: 600;
     color: #A8A8A8;
     text-align: center;
-    margin-top: 2rem;
 }
 
 section p {
     font-size: 1.5rem;
     font-weight: 400;
-    color: #A8A8A8;
     text-align: center;
     margin-top: 1rem;
+    color: #A8A8A8;
 }
 
 .terminal-container {
     background-color: black;
     width: 100%;
     height: 2rem;
-    overflow-y: scroll;
-    transition: height 1s;
     position: fixed;
     bottom: 0;
+    left: 0;
+    
+    transition: height 1s;
     transform-origin: bottom;
+    z-index: 1;
 }
-
 
 
 .terminal-container:hover {
@@ -159,7 +170,6 @@ section p {
 .title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #A8A8A8;
     align-self: flex-start;
     grid-row: 1/3;
     margin-top: 2rem;
@@ -190,8 +200,9 @@ section p {
 
 .about-section p {
     text-align: left;
-    margin-left: 5rem;
+    padding-right: 2rem;
     font-size: 1.1rem;
+    color: #A8A8A8;
 }
 
 
@@ -222,43 +233,57 @@ section p {
     width: 100%;
 }
 
-.ledclock-section {
+.pages-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
     padding-left: 2rem;
-
 }
 
-.ledclock-section h1,
-.ledclock-section h2,
-.ledclock-section h3 {
+.pages-section h1,
+.pages-section h2,
+.pages-section h3 {
     color: white;
     font-weight: 900;
     margin-bottom: 0.5rem;
     text-align: left;
 }
 
-.ledclock-section p,
-.ledclock-section ul {
-    color: #A8A8A8;
+.pages-section p,
+.pages-section ul {
     margin-bottom: 1rem;
     text-align: left;
     font-size: 1rem;
+    color: #A8A8A8;
 }
 
-.ledclock-section ul li {
-    color: #A8A8A8;
+.pages-section ul li {
     margin-bottom: 0.5rem;
+    margin-left: 3rem;
+    color: #A8A8A8;
+}
+
+.pages-section li {
+    margin-bottom: 0.5rem;
+    color: #A8A8A8;
     margin-left: 3rem;
 }
 
+.pages-section img {
+    width: 90%;
+    height: auto;
+    display: block;
+    align-self: flex-start;
+    filter: drop-shadow( 0rem 0rem 60px #300A24);
+    position: sticky;
+}
+
+
+
 
 .card {
-    transition: tranqwerrtrwsform 0.5s;
-    height: 90vh;
-
+    transition: transform 0.5s;
 }
 
 
@@ -268,9 +293,7 @@ section p {
     top: 0;
     left: 3vw;
     width: 25vw;
-    height: 67.5vh;
-    /*background: rgba(0,0,0, 0.5);*/
-    color: #424040;
+
     filter: blur(5px);
     border-radius: 1rem;
     z-index: -1;
@@ -300,8 +323,8 @@ section p {
     align-items: flex-start;
     text-align: left;
     background-color: #300A24;
-    height: 70vh;
-    width: 20vw;
+    height: 54vh;
+    width: 23vw;
     padding: 2rem;
     align-content: center;
     border-radius: 20px;
@@ -316,6 +339,7 @@ section p {
 .card-content p {
     text-align: left;
     font-size: 1.1rem;
+    color: #A8A8A8 ;
 
 }
 
@@ -325,11 +349,6 @@ section p {
     height: auto;
     display: block;
 }
-
-
-
-
-
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -348,4 +367,24 @@ section p {
 
 
 
+.disco .card-content {
+    background-color: #32d11b;
+    color: #ffcb00;
+}
+.disco .card-content h3 {
+    color: #976803;
+}
 
+.disco {
+    background-color: #145ecd;
+    color: #9f2929;
+
+}
+.disco h1,h2,h3,h4,h5,h6,p,ul,li {
+    color: #ff00d8;
+}
+
+.disco nav {
+    background-color: #36ff00;
+    color: #ff00d8;
+}
